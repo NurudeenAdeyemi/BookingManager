@@ -1,0 +1,116 @@
+﻿@model BookingManager.Models.ApartmentRequestModel
+
+@{
+    ViewData["Title"] = "Add Apartment";
+}
+
+<h2 class="my-4">@ViewData["Title"]</h2>
+
+<form asp-action="AddApartment" asp-controller="Apartment" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="CompanyName" class="control-label"></label>
+            <input asp-for="CompanyName" class="form-control" required />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Guests" class="control-label"></label>
+            <input asp-for="Guests" class="form-control" required />
+            <span asp-validation-for="Guests" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="BedRooms" class="control-label"></label>
+            <input asp-for="BedRooms" class="form-control" required />
+            <span asp-validation-for="BedRooms" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="NumberOfRooms" class="control-label"></label>
+            <input asp-for="NumberOfRooms" class="form-control" required />
+            <span asp-validation-for="NumberOfRooms" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" required />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" required />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="State" class="control-label"></label>
+            <input asp-for="State" class="form-control" required />
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="Country" class="control-label"></label>
+            <input asp-for="Country" class="form-control" required />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PrimaryImageUrl" class="control-label">Primary Image</label>
+        <input asp-for="PrimaryImageUrl" type="file" class="form-control-file" required />
+        <span asp-validation-for="PrimaryImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Images" class="control-label">Additional Images</label>
+        <input asp-for="Images" type="file" multiple class="form-control-file" />
+        <span asp-validation-for="Images" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Facilities" class="control-label"></label>
+        <input asp-for="Facilities" class="form-control" required />
+        <span asp-validation-for="Facilities" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Apartment</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}
